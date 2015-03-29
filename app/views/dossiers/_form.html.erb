@@ -1,0 +1,93 @@
+<%= form_for(@dossier) do |f| %>
+  <% if @dossier.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dossier.errors.count, "error") %> prohibited this dossier from being saved:</h2>
+
+      <ul>
+      <% @dossier.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :RaisonSociale %><br>
+    <%= f.text_field :RaisonSociale %>
+  </div>
+  <div class="field">
+    <%= f.label :Type %><br>
+    <%= f.text_field :Type %>
+  </div>
+  <div class="field">
+    <%= f.label :FormeJuridique %><br>
+    <%= f.text_field :FormeJuridique %>
+  </div>
+  <div class="field">
+    <%= f.label :SIRET %><br>
+    <%= f.text_field :SIRET %>
+  </div>
+  <div class="field">
+    <%= f.label :Activite %><br>
+    <%= f.text_field :Activite %>
+  </div>
+  <div class="field">
+    <%= f.label :CodeNAF %><br>
+    <%= f.text_field :CodeNAF %>
+  </div>
+  <div class="field">
+    <%= f.label :Adresse %><br>
+    <%= f.text_field :Adresse %>
+  </div>
+  <div class="field">
+    <%= f.label :Ville %><br>
+    <%= f.text_field :Ville %>
+  </div>
+  <div class="field">
+    <%= f.label :CodePostal %><br>
+    <%= f.text_field :CodePostal %>
+  </div>
+  <div class="field">
+    <%= f.label :Pays %><br>
+    <%= f.text_field :Pays %>
+  </div>
+  <div class="field">
+    <%= f.label :Telephone1 %><br>
+    <%= f.number_field :Telephone1 %>
+  </div>
+  <div class="field">
+    <%= f.label :Telephone2 %><br>
+    <%= f.number_field :Telephone2 %>
+  </div>
+  <div class="field">
+    <%= f.label :Fax %><br>
+    <%= f.number_field :Fax %>
+  </div>
+  <div class="field">
+    <%= f.label :Email %><br>
+    <%= f.text_field :Email %>
+  </div>
+  <div class="field">
+    <%= f.label :NACE %><br>
+    <%= f.text_field :NACE %>
+  </div>
+  <div class="field">
+    <%= f.label :numURSSAF %><br>
+    <%= f.text_field :numURSSAF %>
+  </div>
+  <div class="field">
+    <%= f.label :RefURSSAF %><br>
+    <%= f.text_field :RefURSSAF %>
+  </div>
+  <div class="field">
+    <%= f.label :CodeURSSAF %><br>
+    <%= f.text_field :CodeURSSAF %>
+  </div>
+  <div class="field">
+    <%= f.label :AgrementANSP %><br>
+    <%= f.text_field :AgrementANSP %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

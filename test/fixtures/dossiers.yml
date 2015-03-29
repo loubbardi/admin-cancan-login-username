@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  RaisonSociale: MyString
+  Type: MyString
+  FormeJuridique: MyString
+  SIRET: MyString
+  Activite: MyString
+  CodeNAF: MyString
+  Adresse: MyString
+  Ville: MyString
+  CodePostal: MyString
+  Pays: MyString
+  Telephone1: 1
+  Telephone2: 1
+  Fax: 1
+  Email: MyString
+  NACE: MyString
+  numURSSAF: MyString
+  RefURSSAF: MyString
+  CodeURSSAF: MyString
+  AgrementANSP: MyString
+
+two:
+  RaisonSociale: MyString
+  Type: MyString
+  FormeJuridique: MyString
+  SIRET: MyString
+  Activite: MyString
+  CodeNAF: MyString
+  Adresse: MyString
+  Ville: MyString
+  CodePostal: MyString
+  Pays: MyString
+  Telephone1: 1
+  Telephone2: 1
+  Fax: 1
+  Email: MyString
+  NACE: MyString
+  numURSSAF: MyString
+  RefURSSAF: MyString
+  CodeURSSAF: MyString
+  AgrementANSP: MyString

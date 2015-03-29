@@ -1,0 +1,38 @@
+<h1>Users Account</h1>
+<p>
+  <strong>Username:</strong>
+<%= @user.username %></div>
+</p>
+<p>
+  <strong>Role:</strong>
+  <% for role  in @user.roles.find(:all) do %> 
+ <%= role.name %>
+</p>
+<p>
+
+<%= link_to 'Edit', edit_user_path(@user) %>
+
+<% if current_user.role? :admin %>
+  <p><%= link_to "Liste des Utilisateur", users_path %></p>
+  <% for dossier in Dossier.find(:all) %> 
+	<div class ="control-group">
+	 <strong>Dossier:</strong>
+	<%= link_to dossier.RaisonSociale, dossier %> 
+    </div>
+
+<% end %>
+  <% else %>
+  
+<% for dossier in @user.dossiers.find(:all) %> 
+	<div class ="control-group">
+	 <strong>Dossier:</strong>
+	 
+	<%= link_to dossier.RaisonSociale, dossier %> 
+	 
+    </div>
+
+<% end %>
+ 
+ <% end %>
+ 
+ <% end %>

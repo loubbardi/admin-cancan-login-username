@@ -1,0 +1,64 @@
+<h1>Listing dossiers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Raisonsociale</th>
+      <th>Type</th>
+      <th>Formejuridique</th>
+      <th>Siret</th>
+      <th>Activite</th>
+      <th>Codenaf</th>
+      <th>Adresse</th>
+      <th>Ville</th>
+      <th>Codepostal</th>
+      <th>Pays</th>
+      <th>Telephone1</th>
+      <th>Telephone2</th>
+      <th>Fax</th>
+      <th>Email</th>
+      <th>Nace</th>
+      <th>Numurssaf</th>
+      <th>Refurssaf</th>
+      <th>Codeurssaf</th>
+      <th>Agrementansp</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dossiers.each do |dossier| %>
+      <tr>
+        <td><%= dossier.RaisonSociale %></td>
+        <td><%= dossier.Type %></td>
+        <td><%= dossier.FormeJuridique %></td>
+        <td><%= dossier.SIRET %></td>
+        <td><%= dossier.Activite %></td>
+        <td><%= dossier.CodeNAF %></td>
+        <td><%= dossier.Adresse %></td>
+        <td><%= dossier.Ville %></td>
+        <td><%= dossier.CodePostal %></td>
+        <td><%= dossier.Pays %></td>
+        <td><%= dossier.Telephone1 %></td>
+        <td><%= dossier.Telephone2 %></td>
+        <td><%= dossier.Fax %></td>
+        <td><%= dossier.Email %></td>
+        <td><%= dossier.NACE %></td>
+        <td><%= dossier.numURSSAF %></td>
+        <td><%= dossier.RefURSSAF %></td>
+        <td><%= dossier.CodeURSSAF %></td>
+        <td><%= dossier.AgrementANSP %></td>
+        <td><%= link_to 'Show', dossier %></td>
+        <td><%= link_to 'Edit', edit_dossier_path(dossier) %></td>
+        <td><%= link_to 'Destroy', dossier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dossier', new_dossier_path %> |||
+<%= link_to 'Retour ', root_path %>

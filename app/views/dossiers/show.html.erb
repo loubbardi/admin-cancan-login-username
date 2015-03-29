@@ -1,0 +1,104 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Raisonsociale:</strong>
+  <%= @dossier.RaisonSociale %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @dossier.Type %>
+</p>
+
+<p>
+  <strong>Formejuridique:</strong>
+  <%= @dossier.FormeJuridique %>
+</p>
+
+<p>
+  <strong>Siret:</strong>
+  <%= @dossier.SIRET %>
+</p>
+
+<p>
+  <strong>Activite:</strong>
+  <%= @dossier.Activite %>
+</p>
+
+<p>
+  <strong>Codenaf:</strong>
+  <%= @dossier.CodeNAF %>
+</p>
+
+<p>
+  <strong>Adresse:</strong>
+  <%= @dossier.Adresse %>
+</p>
+
+<p>
+  <strong>Ville:</strong>
+  <%= @dossier.Ville %>
+</p>
+
+<p>
+  <strong>Codepostal:</strong>
+  <%= @dossier.CodePostal %>
+</p>
+
+<p>
+  <strong>Pays:</strong>
+  <%= @dossier.Pays %>
+</p>
+
+<p>
+  <strong>Telephone1:</strong>
+  <%= @dossier.Telephone1 %>
+</p>
+
+<p>
+  <strong>Telephone2:</strong>
+  <%= @dossier.Telephone2 %>
+</p>
+
+<p>
+  <strong>Fax:</strong>
+  <%= @dossier.Fax %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @dossier.Email %>
+</p>
+
+<p>
+  <strong>Nace:</strong>
+  <%= @dossier.NACE %>
+</p>
+
+<p>
+  <strong>Numurssaf:</strong>
+  <%= @dossier.numURSSAF %>
+</p>
+
+<p>
+  <strong>Refurssaf:</strong>
+  <%= @dossier.RefURSSAF %>
+</p>
+
+<p>
+  <strong>Codeurssaf:</strong>
+  <%= @dossier.CodeURSSAF %>
+</p>
+
+<p>
+  <strong>Agrementansp:</strong>
+  <%= @dossier.AgrementANSP %>
+</p>
+
+<%= link_to 'Edit', edit_dossier_path(@dossier) %> |
+<% if current_user.role? :admin %>
+<%= link_to 'Liste dossiers', dossiers_path %>
+<%= link_to 'Retour', root_path %>
+<% else %>
+<%= link_to 'Retour', root_path %>
+<% end %>
