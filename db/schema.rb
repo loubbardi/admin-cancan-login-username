@@ -11,28 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140217180705) do
+ActiveRecord::Schema.define(version: 20150411145036) do
 
   create_table "dossiers", force: true do |t|
-    t.string   "RaisonSociale"
-    t.string   "Type"
-    t.string   "FormeJuridique"
-    t.string   "SIRET"
-    t.string   "Activite"
-    t.string   "CodeNAF"
-    t.string   "Adresse"
-    t.string   "Ville"
-    t.string   "CodePostal"
-    t.string   "Pays"
-    t.integer  "Telephone1"
-    t.integer  "Telephone2"
-    t.integer  "Fax"
-    t.string   "Email"
-    t.string   "NACE"
-    t.string   "numURSSAF"
-    t.string   "RefURSSAF"
-    t.string   "CodeURSSAF"
-    t.string   "AgrementANSP"
+    t.string   "raison_sociale"
+    t.string   "rcs_ville"
+    t.string   "siren"
+    t.string   "nic"
+    t.string   "forme_juridique"
+    t.boolean  "societe_mono_etablissement"
+    t.string   "code_naf"
+    t.integer  "regime_fiscal_id"
+    t.integer  "adresse_id"
+    t.date     "date_creation"
+    t.decimal  "capital"
+    t.integer  "nombre_action"
+    t.string   "activite_principale"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -40,6 +34,31 @@ ActiveRecord::Schema.define(version: 20140217180705) do
   create_table "dossiers_users", id: false, force: true do |t|
     t.integer "dossier_id"
     t.integer "user_id"
+  end
+
+  create_table "ecritures", force: true do |t|
+    t.string   "journal"
+    t.date     "date_ecriture"
+    t.string   "compte"
+    t.string   "libelle"
+    t.decimal  "debit"
+    t.decimal  "credit"
+    t.string   "numero_facture"
+    t.string   "mode_reglement"
+    t.string   "lettrage"
+    t.date     "echeance"
+    t.integer  "numero_mouvement"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "dossier_id"
+  end
+
+  create_table "exercices", force: true do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "dossier_id"
   end
 
   create_table "roles", force: true do |t|
@@ -67,6 +86,8 @@ ActiveRecord::Schema.define(version: 20140217180705) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username"
+    t.string   "nom"
+    t.string   "prenom"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

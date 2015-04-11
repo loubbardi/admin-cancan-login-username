@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @exercice.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @exercice.end_date %>
+</p>
+
+<%= link_to 'Editer Exercice', edit_dossier_exercice_path(@dossier, @exercice), :class => "btn btn-primary" %> |
+<%= link_to 'Detruire Exercice', [@dossier, @exercice], :class => 'btn btn-danger', method: :delete, data: { confirm: 'Voulez vous detruire cet exercice?' } %> |
+<%= link_to dossier_path(@dossier) do %><span class="icon-folder-open"></span> Dossiers<% end %> |
+<%= link_to dossier_path(@dossier, @exercice) do %><%= @dossier.raison_sociale %><%end%><span class="separator">
+
+<%= link_to 'Back', dossier_exercices_path(@dossier) %>

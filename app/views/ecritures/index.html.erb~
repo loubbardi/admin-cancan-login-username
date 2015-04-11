@@ -1,0 +1,47 @@
+<h1>Listing ecritures</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Journal</th>
+      <th>Date ecriture</th>
+      <th>Compte</th>
+      <th>Libelle</th>
+      <th>Debit</th>
+      <th>Credit</th>
+      <th>Numero facture</th>
+      <th>Mode reglement</th>
+      <th>Lettrage</th>
+      <th>Echeance</th>
+      <th>Numero mouvement</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ecritures.each do |ecriture| %>
+      <tr>
+        <td><%= ecriture.journal %></td>
+        <td><%= ecriture.date_ecriture %></td>
+        <td><%= ecriture.compte %></td>
+        <td><%= ecriture.libelle %></td>
+        <td><%= ecriture.debit %></td>
+        <td><%= ecriture.credit %></td>
+        <td><%= ecriture.numero_facture %></td>
+        <td><%= ecriture.mode_reglement %></td>
+        <td><%= ecriture.lettrage %></td>
+        <td><%= ecriture.echeance %></td>
+        <td><%= ecriture.numero_mouvement %></td>
+        <td><%= link_to 'Show', ecriture %></td>
+        <td><%= link_to 'Edit', edit_ecriture_path(ecriture) %></td>
+        <td><%= link_to 'Destroy', ecriture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ecriture', new_dossier_ecriture_path(@dossier) %>

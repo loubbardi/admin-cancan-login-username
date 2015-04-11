@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Useradminacount</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body class="loginpage">
+
+<div class="container center_div">
+	<div class="row clearfix">
+		<div class="col-md-4 col-md-offset-4 loginlogo">
+		<%= image_tag("logo.png", alt: "logo")%>
+		</div>
+		<div class="col-md-4 col-md-offset-4">
+		
+			<%= yield %>
+		
+		</div>
+	</div>
+</div>
+
+
+
+</body>
+</html>

@@ -254,8 +254,7 @@ Devise.setup do |config|
   
   
   config.authentication_keys = [ :login ]
-  
   config.reset_password_keys = [ :login ]
-config.confirmation_keys = [ :login ]
+  config.confirmation_keys = [ :login ]
   
 end

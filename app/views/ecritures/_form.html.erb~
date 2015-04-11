@@ -1,0 +1,61 @@
+<%= form_for(@ecriture) do |f| %>
+  <% if @ecriture.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ecriture.errors.count, "error") %> prohibited this ecriture from being saved:</h2>
+
+      <ul>
+      <% @ecriture.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :journal %><br>
+    <%= f.text_field :journal %>
+  </div>
+  <div class="field">
+    <%= f.label :date_ecriture %><br>
+    <%= f.date_select :date_ecriture %>
+  </div>
+  <div class="field">
+    <%= f.label :compte %><br>
+    <%= f.text_field :compte %>
+  </div>
+  <div class="field">
+    <%= f.label :libelle %><br>
+    <%= f.text_field :libelle %>
+  </div>
+  <div class="field">
+    <%= f.label :debit %><br>
+    <%= f.text_field :debit %>
+  </div>
+  <div class="field">
+    <%= f.label :credit %><br>
+    <%= f.text_field :credit %>
+  </div>
+  <div class="field">
+    <%= f.label :numero_facture %><br>
+    <%= f.text_field :numero_facture %>
+  </div>
+  <div class="field">
+    <%= f.label :mode_reglement %><br>
+    <%= f.text_field :mode_reglement %>
+  </div>
+  <div class="field">
+    <%= f.label :lettrage %><br>
+    <%= f.text_field :lettrage %>
+  </div>
+  <div class="field">
+    <%= f.label :echeance %><br>
+    <%= f.date_select :echeance %>
+  </div>
+  <div class="field">
+    <%= f.label :numero_mouvement %><br>
+    <%= f.number_field :numero_mouvement %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

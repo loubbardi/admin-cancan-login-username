@@ -1,0 +1,2 @@
+class Ecriture < ActiveRecord::Base
+end

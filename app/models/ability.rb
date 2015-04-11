@@ -10,8 +10,7 @@ class Ability
     if user.role? :moderator
       can :update, User do |account|
         account.email == user.email
-      end
-	can :read, User 
+      end 
 	can [:read, :update], Dossier, id: user.dossiers.pluck(:id)
     end
 

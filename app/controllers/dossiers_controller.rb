@@ -14,6 +14,7 @@ class DossiersController < ApplicationController
   # GET /dossiers/1
   # GET /dossiers/1.json
   def show
+  @exercice = @dossier.exercices.new
   end
 
   # GET /dossiers/new
@@ -73,6 +74,6 @@ class DossiersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dossier_params
-      params.require(:dossier).permit(:RaisonSociale, :Type, :FormeJuridique, :SIRET, :Activite, :CodeNAF, :Adresse, :Ville, :CodePostal, :Pays, :Telephone1, :Telephone2, :Fax, :Email, :NACE, :numURSSAF, :RefURSSAF, :CodeURSSAF, :AgrementANSP)
+      params.require(:dossier).permit(:raison_sociale, :rcs_ville, :siren, :nic, :forme_juridique, :societe_mono_etablissement, :code_naf, :regime_fiscal_id, :adresse_id, :date_creation, :capital, :nombre_action, :activite_principale)
     end
 end

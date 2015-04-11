@@ -1,0 +1,29 @@
+<h1>Listing exercices</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start date</th>
+      <th>End date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @exercices.each do |exercice| %>
+      <tr>
+        <td><%= exercice.start_date %></td>
+        <td><%= exercice.end_date %></td>
+        <td><%= link_to 'Show', dossier_exercice_path(@dossier, exercice) %></td>
+        <td><%= link_to 'Edit', edit_dossier_exercice_path(@dossier, exercice) %></td>
+        <td><%= link_to 'Destroy', [@dossier, exercice], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Exercice', new_dossier_exercice_path(@dossier) %>

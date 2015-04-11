@@ -1,64 +1,71 @@
-<h1>Listing dossiers</h1>
+<div class="row clearfix">
+  <div class="col-md-12 column">
+    <ul class="breadcrumb">
+      <li><%= link_to root_path do %>
+	  <span class="glyphicon glyphicon-home"></span>
+	  <% end %>
+          <%= link_to 'Accueil', root_path %>
+      </li>
+      <li class="active">Dossiers</li>
+    </ul>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Raisonsociale</th>
-      <th>Type</th>
-      <th>Formejuridique</th>
-      <th>Siret</th>
-      <th>Activite</th>
-      <th>Codenaf</th>
-      <th>Adresse</th>
-      <th>Ville</th>
-      <th>Codepostal</th>
-      <th>Pays</th>
-      <th>Telephone1</th>
-      <th>Telephone2</th>
-      <th>Fax</th>
-      <th>Email</th>
-      <th>Nace</th>
-      <th>Numurssaf</th>
-      <th>Refurssaf</th>
-      <th>Codeurssaf</th>
-      <th>Agrementansp</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="row clearfix">
+  <div class="col-md-12 column">
+    <div class="page-header pagetitle">
+     <h1>
+       <span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Dossiers
+     </h1>
+    </div>
+  </div>
+</div>
 
-  <tbody>
-    <% @dossiers.each do |dossier| %>
-      <tr>
-        <td><%= dossier.RaisonSociale %></td>
-        <td><%= dossier.Type %></td>
-        <td><%= dossier.FormeJuridique %></td>
-        <td><%= dossier.SIRET %></td>
-        <td><%= dossier.Activite %></td>
-        <td><%= dossier.CodeNAF %></td>
-        <td><%= dossier.Adresse %></td>
-        <td><%= dossier.Ville %></td>
-        <td><%= dossier.CodePostal %></td>
-        <td><%= dossier.Pays %></td>
-        <td><%= dossier.Telephone1 %></td>
-        <td><%= dossier.Telephone2 %></td>
-        <td><%= dossier.Fax %></td>
-        <td><%= dossier.Email %></td>
-        <td><%= dossier.NACE %></td>
-        <td><%= dossier.numURSSAF %></td>
-        <td><%= dossier.RefURSSAF %></td>
-        <td><%= dossier.CodeURSSAF %></td>
-        <td><%= dossier.AgrementANSP %></td>
-        <td><%= link_to 'Show', dossier %></td>
-        <td><%= link_to 'Edit', edit_dossier_path(dossier) %></td>
-        <td><%= link_to 'Destroy', dossier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+<div class="row clearfix">
+  <div class="col-md-8 column">
+    <div class="table-responsive margintop20">
+	<table class="table table-striped table-hover">
+	  <thead>
+	    <tr  class="info">
+	      <th>Raison sociale</th>
+	      <th>SIRET</th>
+	      <th>Forme juridique</th>
+	      <th>Code NAF</th>
+	      <th>R&eacute;gime fiscal</th>
+	      <th>Activite principale</th>
+	      <th></th>
+	    </tr>
+	  </thead>
 
-<%= link_to 'New Dossier', new_dossier_path %> |||
-<%= link_to 'Retour ', root_path %>
+	  <tbody>
+	    <% @dossiers.each do |dossier| %>
+	      <tr>
+		<td data-link="<%= dossier_path(dossier) %>"><%= dossier.raison_sociale %></td>
+		<td  data-link="<%= dossier_path(dossier) %>"><%= dossier.siren %><%= dossier.nic %></td>
+		<td  data-link="<%= dossier_path(dossier) %>"><%= dossier.forme_juridique %></td>
+		<td  data-link="<%= dossier_path(dossier) %>"><%= dossier.code_naf %></td>
+		<td  data-link="<%= dossier_path(dossier) %>"><%= dossier.regime_fiscal_id %></td>
+		<td  data-link="<%= dossier_path(dossier) %>"><%= dossier.activite_principale %></td>
+		<td><%= link_to '&Eacute;diter le dossier'.html_safe, edit_dossier_path(dossier), :class => "btn btn-success btn-xs" %></td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+    </div>
+  </div>
+  <div class="col-md-4 column">
+  <h1><%= link_to 'Nouveau Dossier', new_dossier_path, :class => "btn btn-primary btn-lg" %></h1>
+  </div>
+ 
+</div>
+
+
+
+
+
+
+
+
+
+

@@ -1,4 +1,5 @@
-<%= form_for(@dossier) do |f| %>
+<%= form_for(@dossier, :html => {:class => 'form-horizontal margintop20'}) do |f| %>
+
   <% if @dossier.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@dossier.errors.count, "error") %> prohibited this dossier from being saved:</h2>
@@ -11,83 +12,87 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :RaisonSociale %><br>
-    <%= f.text_field :RaisonSociale %>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Raison sociale</label>
+    <div class="col-sm-4">
+    <%= f.text_field :raison_sociale, :class => "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :Type %><br>
-    <%= f.text_field :Type %>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">RCS Ville</label>
+    <div class="col-sm-4">
+    <%= f.text_field :rcs_ville, :class => "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :FormeJuridique %><br>
-    <%= f.text_field :FormeJuridique %>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">SIREN</label>
+    <div class="col-sm-4">
+    <%= f.text_field :siren, :class => "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :SIRET %><br>
-    <%= f.text_field :SIRET %>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">NIC</label>
+    <div class="col-sm-4">
+    <%= f.text_field :nic, :class => "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :Activite %><br>
-    <%= f.text_field :Activite %>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Forme juridique</label>
+    <div class="col-sm-4">
+    <%= f.text_field :forme_juridique, :class => "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :CodeNAF %><br>
-    <%= f.text_field :CodeNAF %>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Soci&eacute;t&eacute; mono-&eacute;tablissement</label>
+    <div class="col-sm-4">
+    <%= f.check_box :societe_mono_etablissement %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :Adresse %><br>
-    <%= f.text_field :Adresse %>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Code NAF</label>
+    <div class="col-sm-4">
+    <%= f.text_field :code_naf, :class => "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :Ville %><br>
-    <%= f.text_field :Ville %>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">R&eacute;gime fiscal</label>
+    <div class="col-sm-4">
+    <%= f.text_field :regime_fiscal_id, :class => "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :CodePostal %><br>
-    <%= f.text_field :CodePostal %>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Adresse</label>
+    <div class="col-sm-4">
+    <%= f.text_field :adresse_id, :class => "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :Pays %><br>
-    <%= f.text_field :Pays %>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Date de cr&eacute;ation</label>
+    <div class="col-sm-4">
+    <%= f.text_field :date_creation, :class => "datepicker form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :Telephone1 %><br>
-    <%= f.number_field :Telephone1 %>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Capital</label>
+    <div class="col-sm-4">
+    <%= f.text_field :capital, :class => "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :Telephone2 %><br>
-    <%= f.number_field :Telephone2 %>
+ <div class="form-group">
+    <label class="col-sm-2 control-label">Nombre d&acute;action</label>
+    <div class="col-sm-4">
+    <%= f.text_field :nombre_action, :class => "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :Fax %><br>
-    <%= f.number_field :Fax %>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Activit&eacute principale</label>
+    <div class="col-sm-4">
+    <%= f.text_field :activite_principale, :class => "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :Email %><br>
-    <%= f.text_field :Email %>
-  </div>
-  <div class="field">
-    <%= f.label :NACE %><br>
-    <%= f.text_field :NACE %>
-  </div>
-  <div class="field">
-    <%= f.label :numURSSAF %><br>
-    <%= f.text_field :numURSSAF %>
-  </div>
-  <div class="field">
-    <%= f.label :RefURSSAF %><br>
-    <%= f.text_field :RefURSSAF %>
-  </div>
-  <div class="field">
-    <%= f.label :CodeURSSAF %><br>
-    <%= f.text_field :CodeURSSAF %>
-  </div>
-  <div class="field">
-    <%= f.label :AgrementANSP %><br>
-    <%= f.text_field :AgrementANSP %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+    <%= f.submit 'Envoyer'.html_safe, :class => "btn btn-primary" %>
+    </div>
   </div>
 <% end %>

@@ -1,6 +1,38 @@
-<h1>Editing dossier</h1>
+<div class="row clearfix">
+  <div class="col-md-12 column">
+    <ul class="breadcrumb">
+      <li><%= link_to root_path do %>
+	  <span class="glyphicon glyphicon-home"></span>
+	  <% end %>
+          <%= link_to 'Accueil', root_path %>
+      </li>
+      <li><%= link_to dossiers_path, data: { no_turbolink: true } do %>
+          Dossiers  
+	  <% end %>
+      </li>
+      <li><%= link_to @dossier.raison_sociale, @dossier %></li>
+      <li class="active">&Eacute;diter</li>
+    </ul>
+  </div>
+</div>
 
-<%= render 'form' %>
+<div class="row clearfix">
+  <div class="col-md-12 column">
+    <div class="page-header pagetitle">
+     <h1>
+       <span class="glyphicon glyphicon-list-alt"></span>&nbsp;&Eacute;diter&nbsp;<%= @dossier.raison_sociale %>
+     </h1>
+    </div>
+  </div>
+</div>
+<div class="row clearfix">
+  <div class="col-md-6 column">
+  <%= render 'form' %>
+  </div>
+  <div class="col-md-6 column">
+  <h1><%= link_to 'Afficher le dossier', @dossier, :class => "btn btn-info btn-lg" %></h1>
+  <h1><%= link_to 'Liste des dossiers', dossiers_path, data: { no_turbolink: true }, :class => "btn btn-success btn-lg" %></h1>
+  </div>
+</div>
 
-<%= link_to 'Show', @dossier %> |
-<%= link_to 'Back', dossiers_path %>
+

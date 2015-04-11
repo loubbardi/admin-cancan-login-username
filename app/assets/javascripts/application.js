@@ -13,4 +13,20 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap-sprockets
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.fr.js
 //= require_tree .
+
+jQuery(function($) {
+$("td[data-link]").click(function() {
+window.location = this.dataset.link
+});
+})
+
+
+
+$(document).ready(function(){
+  $('.datepicker').datepicker({ language: "fr-FR" });
+});  
+

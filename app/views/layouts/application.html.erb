@@ -6,24 +6,100 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="dashboard">
 
-<% if user_signed_in? %>
-  <p>Signed in as: <%= current_user.email %></p>
-  <p><%= link_to 'Log Out', destroy_user_session_path, :method => 'delete', :data => { :confirm => 'Are you sure?' } %></p>
-<% end %>
-
-
-
-<% [:notice, :error, :alert, :success].each do |level| %>
-  <% unless flash[level].blank? %>
-    <div class="<%= flash_class(level) %>">
-      <%= content_tag :span, flash[level] %>
+<div class="container  width100 margin10">
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+           <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+           </button><%= link_to 'LOUBBARDI & ASSOCI&Eacute;S'.html_safe, root_path, class: "navbar-brand" %>
+        </div>
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	<% if current_user.role? :admin %>
+          <ul class="nav navbar-nav">
+            <li class="active">
+              <%= link_to('Dossiers', dossiers_path, data: { no_turbolink: true }) %>
+            </li>
+            <li>
+              <%= link_to('Utilisateur', users_path, data: { no_turbolink: true }) %>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="#">Action</a>
+                  </li>
+                  <li>
+                    <a href="#">Another action</a>
+                  </li>
+                  <li>
+                    <a href="#">Something else here</a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <a href="#">Separated link</a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <a href="#">One more separated link</a>
+                  </li>
+		</ul>
+		  </li>
+          </ul>
+	<% end %>
+					
+	  <ul class="nav navbar-nav navbar-right">
+	    <li class="dropdown">
+	      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+	        <%= current_user.prenom %> <%= current_user.nom %></small> <strong class="caret"></strong>
+              </a>
+		<ul class="dropdown-menu">
+		  <li>
+		    <%= link_to 'Editer mon profile', edit_user_path(current_user) %>
+		  </li>
+		  <li>
+		    <%= link_to 'Afficher mon profile', user_path(current_user) %>
+		  </li>
+		  <li class="divider"></li>
+                  <li>
+		    <%= link_to 'd&eacute;connection'.html_safe, destroy_user_session_path, :method => 'delete', :data => { :confirm => 'Are you sure?' } %>
+		  </li>
+		</ul>
+	    </li>
+	  </ul>
+	</div>
+      </nav>
     </div>
-  <% end %>
-<% end %>
+  </div>
+</div>
+<div class="container width100">
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <% [:notice, :error, :alert, :success].each do |level| %>
+        <div class="col-md-12 column">		
+  	  <% unless flash[level].blank? %>
+    	    <div class="<%= flash_class(level) %>">
+      	      <%= content_tag :span, flash[level] %>
+    	    </div>
+  	  <% end %>
+    </div>
+      <% end %>
+  </div>
+</div>
 
-<%= yield %>
+<div class="container width100">
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+     <%= yield %>
+    </div>
+  </div>
+</div>
+
+
+
 
 </body>
 </html>

@@ -89,7 +89,7 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
     def user_params
       
        
-      params.require(:user).permit(:email, :password, :password_confirmation, :remember_me, :username, {:role_ids => []}, {:dossier_ids => []}, )
+      params.require(:user).permit(:email, :password, :password_confirmation, :remember_me, :username, {:role_ids => []}, {:dossier_ids => []}, :nom, :prenom)
     
     end
 

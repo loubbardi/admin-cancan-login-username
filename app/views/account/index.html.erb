@@ -1,38 +1,103 @@
-<h1>Users Account</h1>
-<p>
-  <strong>Username:</strong>
-<%= @user.username %></div>
-</p>
-<p>
-  <strong>Role:</strong>
-  <% for role  in @user.roles.find(:all) do %> 
- <%= role.name %>
-</p>
-<p>
 
-<%= link_to 'Edit', edit_user_path(@user) %>
+<div class="row clearfix">
+  <div class="col-md-12 column">
+    <ul class="breadcrumb">
+      <li><span class="glyphicon glyphicon-home"></span>&nbsp;Accueil</li>
+    </ul>
+  </div>
+</div>
 
-<% if current_user.role? :admin %>
-  <p><%= link_to "Liste des Utilisateur", users_path %></p>
-  <% for dossier in Dossier.find(:all) %> 
-	<div class ="control-group">
-	 <strong>Dossier:</strong>
-	<%= link_to dossier.RaisonSociale, dossier %> 
+<div class="row clearfix">
+  <div class="col-md-12 column">
+    <div class="page-header pagetitle">
+     <h1>
+       <span class="glyphicon glyphicon-blackboard"></span>&nbsp;Tableau de bord
+     </h1>
     </div>
+  </div>
+</div>
 
-<% end %>
-  <% else %>
+<div class="row clearfix" style="margin-top: 30px;">
+  <div class="col-md-6 column">
+   <div class="panel-group" id="panel-553946">
+	<% for role  in @user.roles.find(:all) do %>
+	<% if current_user.role? :admin %>
+        <% for @dossier in Dossier.find(:all) %>
+      <div class="panel panel-default"> 
+        <div class="panel-heading">
+          <%=link_to @dossier.raison_sociale, dossier_path(@dossier),  :class => "btn btn-primary", :style => "margin-right:30px" %> 
+          <a class="panel-title" data-toggle="collapse" data-parent="#panel-553946" href="#panel-element-43554<%= @dossier.id %>">
+	  Exercices
+	  </a>
+	</div><!-- panel-heading -->
+	<div id="panel-element-43554<%= @dossier.id %>" class="collapse">
+	  <div class="panel-body">
+            <ul>
+            <% for exercice in Exercice.find(:all, :conditions => {:dossier_id => @dossier }) %>
+              <li>
+	        <%= link_to exercice.start_date, dossier_exercice_path(exercice.dossier_id, exercice) %>
+	      </li>
+            <% end %>
+	    </ul>
+	  </div><!-- panel-body -->
+	</div>
+      </div>
+      <% end %><!-- end dossier find all loop -->
+   
+	<% else %>
+
+        <% @user.dossiers.each do |dossier| %>
+      <div class="panel panel-default"> 
+        <div class="panel-heading">
+          <%=link_to dossier.raison_sociale, dossier_path(dossier),  :class => "btn btn-primary", :style => "margin-right:30px" %> 
+          <a class="panel-title" data-toggle="collapse" data-parent="#panel-553946" href="#panel-element-43554<%= dossier.id %>">
+	  Exercices
+	  </a>
+	</div><!-- panel-heading -->
+	<div id="panel-element-43554<%= dossier.id %>" class="collapse">
+	  <div class="panel-body">
+	    - liste exercices
+	  </div><!-- panel-body -->
+	</div>
+      </div>
+      <% end %><!-- end user dossier loop -->
+      <% end %><!-- end admin role loop -->
+      <% end %><!-- end role loop --> 
+    </div>
+  </div>  
+
+   
+
+
+
   
-<% for dossier in @user.dossiers.find(:all) %> 
-	<div class ="control-group">
-	 <strong>Dossier:</strong>
-	 
-	<%= link_to dossier.RaisonSociale, dossier %> 
-	 
-    </div>
 
-<% end %>
- 
- <% end %>
- 
- <% end %>
+  <div class="col-md-6 column">
+    <table class="table">
+      <tbody>
+        <tr class="info">
+	  <td>Mon Email:</td>
+          <td><%= current_user.email %></td>
+	</tr>
+	<tr class="active">
+          <td>Mon Role:</td>
+	  <td>
+            <% for role  in @user.roles.find(:all) do %> 
+	    <%= role.name %>
+	    <% end %>
+	  </td>
+	</tr>
+	<tr class="info">
+          <td>Derniere connexion:</td>
+          <td><%= current_user.last_sign_in_at.strftime("%m/%d/%Y a %H:%m")  %></td>
+	</tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+  </div>
+  <div class="col-md-6 column">
+  </div>
+</div>

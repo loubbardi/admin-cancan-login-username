@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Journal:</strong>
+  <%= @ecriture.journal %>
+</p>
+
+<p>
+  <strong>Date ecriture:</strong>
+  <%= @ecriture.date_ecriture %>
+</p>
+
+<p>
+  <strong>Compte:</strong>
+  <%= @ecriture.compte %>
+</p>
+
+<p>
+  <strong>Libelle:</strong>
+  <%= @ecriture.libelle %>
+</p>
+
+<p>
+  <strong>Debit:</strong>
+  <%= @ecriture.debit %>
+</p>
+
+<p>
+  <strong>Credit:</strong>
+  <%= @ecriture.credit %>
+</p>
+
+<p>
+  <strong>Numero facture:</strong>
+  <%= @ecriture.numero_facture %>
+</p>
+
+<p>
+  <strong>Mode reglement:</strong>
+  <%= @ecriture.mode_reglement %>
+</p>
+
+<p>
+  <strong>Lettrage:</strong>
+  <%= @ecriture.lettrage %>
+</p>
+
+<p>
+  <strong>Echeance:</strong>
+  <%= @ecriture.echeance %>
+</p>
+
+<p>
+  <strong>Numero mouvement:</strong>
+  <%= @ecriture.numero_mouvement %>
+</p>
+
+
+
+<%= link_to 'Editer ecriture', edit_dossier_ecriture_path(@dossier, @ecriture), :class => "btn btn-primary" %> |
+<%= link_to 'Detruire ecriture', [@dossier, @ecriture], :class => 'btn btn-danger', method: :delete, data: { confirm: 'Voulez vous detruire cet ecriture?' } %> |
+<%= link_to dossier_path(@dossier) do %><span class="icon-folder-open"></span> Dossiers<% end %> |
+<%= link_to dossier_path(@dossier, @exercice) do %><%= @dossier.raison_sociale %><%end%><span class="separator">
+
+<%= link_to 'Back', dossier_ecritures_path(@dossier) %>
+
+
+
+<%= link_to 'Edit', edit_ecriture_path(@ecriture) %> |
+<%= link_to 'Back', ecritures_path %>

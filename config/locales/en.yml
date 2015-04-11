@@ -21,3 +21,12 @@
 
 en:
   hello: "Hello world"
+
+en:
+  unauthorized:
+    default: "Default error message text."
+    manage:
+      all: "Vous n etes pas autorise a %{action} %{subject}."
+      user: "Vous n'etes pas autorise a manager d'autre compte utilisateur."
+    update:
+      project: "Not allowed to update this project."

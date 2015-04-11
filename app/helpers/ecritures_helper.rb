@@ -1,0 +1,2 @@
+module EcrituresHelper
+end

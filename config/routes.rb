@@ -1,5 +1,12 @@
 Useradminacount::Application.routes.draw do
-  resources :dossiers
+  
+  resources :dossiers do
+    resources :exercices 		
+  end
+ 
+  resources :dossiers do
+    resources :ecritures
+  end
 
   resources :roles
 
@@ -13,6 +20,8 @@ Useradminacount::Application.routes.draw do
     delete "/logout" => "devise/sessions#destroy", :as => :destroy_user_session
   end
   
+
+
   #get "account/index"
   
   root :to => 'account#index'

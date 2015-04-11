@@ -11,9 +11,19 @@
     </div>
   <% end %>
 
-<div class="field"><%= f.label :username %><br />
-<%= f.text_field :username %></div>
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :prenom %><br />
+    <%= f.text_field :prenom %>
+  </div>
 
+  <div class="field">
+    <%= f.label :nom %><br />
+    <%= f.text_field :nom %>
+  </div>
 
   <div class="field">
     <%= f.label :email %>
@@ -51,7 +61,7 @@
 			<% for dossier in Dossier.find(:all) %> 
 				<div class ="control-group">
 					<p><%= check_box_tag  "user[dossier_ids][]", dossier.id, @user.dossiers.include?(dossier) %>
-					<%=  dossier.RaisonSociale %></p>
+					<%=  dossier.raison_sociale %></p>
 				</div>
 			<% end %>
 		<% end %>

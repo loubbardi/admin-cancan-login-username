@@ -1,104 +1,131 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Raisonsociale:</strong>
-  <%= @dossier.RaisonSociale %>
-</p>
+<div class="row clearfix">
+  <div class="col-md-12 column">
+    <ul class="breadcrumb">
+      <li><%= link_to root_path do %>
+	  <span class="glyphicon glyphicon-home"></span>
+	  <% end %>
+          <%= link_to 'Accueil', root_path %>
+      </li>
+      <li><%= link_to dossiers_path, data: { no_turbolink: true } do %>
+          Dossiers  
+	  <% end %>
+      </li>
+      <li class="active"><%= @dossier.raison_sociale %></li>
+    </ul>
+  </div>
+</div>
 
-<p>
-  <strong>Type:</strong>
-  <%= @dossier.Type %>
-</p>
+<div class="row clearfix">
+  <div class="col-md-12 column">
+    <div class="page-header pagetitle">
+     <h1>
+       <span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;<%= @dossier.raison_sociale %>
+     </h1>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Formejuridique:</strong>
-  <%= @dossier.FormeJuridique %>
-</p>
+<div class="row clearfix">
+  <div class="col-md-4 column">
+    <dl class="dl-horizontal margintop20">
+    <dt>RCS ville:</dt>
+    <dd><%= @dossier.rcs_ville %></dd>
+    </dl>
+    <dl class="dl-horizontal">
+    <dt>SIREN:</dt>
+    <dd><%= @dossier.siren %></dd>
+    </dl>
+    <dl class="dl-horizontal">
+    <dt>NIC:</dt>
+    <dd><%= @dossier.nic %></dd>
+    </dl>
+    <dl class="dl-horizontal">
+    <dt>Forme juridique:</dt>
+    <dd><%= @dossier.forme_juridique %></dd>
+    </dl>
+    <dl class="dl-horizontal">
+    <dt>Soci&eacute;t&eacute; mono-&eacute;tablissement:</dt>
+    <dd><%= @dossier.societe_mono_etablissement %></dd>
+    </dl>
+    <dl class="dl-horizontal">
+    <dt>R&eacute;gime fiscal:</dt>
+    <dd><%= @dossier.regime_fiscal_id %></dd>
+    </dl>
+    <dl class="dl-horizontal">
+    <dt>Adresse:</dt>
+    <dd><%= @dossier.adresse_id %></dd>
+    </dl>
+    <dl class="dl-horizontal">
+    <dt>Date de cr&eacute;ation:</dt>
+    <dd><%= @dossier.date_creation %></dd>
+    </dl>
+    <dl class="dl-horizontal">
+    <dt>Capital:</dt>
+    <dd><%= @dossier.capital %></dd>
+    </dl>
+    <dl class="dl-horizontal">
+    <dt>Nombre d&acute;action:</dt>
+    <dd><%= @dossier.nombre_action %></dd>
+    </dl>
+    <dl class="dl-horizontal">
+    <dt>Activit&eacute principale:</dt>
+    <dd><%= @dossier.activite_principale %></dd>
+    </dl>
+  </div>
+  <div class="col-md-8 column">
+    <h1><%= link_to '&Eacute;diter le dossier'.html_safe, edit_dossier_path(@dossier), :class => "btn btn-success btn-lg" %></h1>
+    <h1><%= link_to 'Liste des dossiers', dossiers_path, data: { no_turbolink: true }, :class => "btn btn-info btn-lg" %></h1>
+    <h1><%= link_to 'Ecritures',dossier_ecritures_path(:dossier_id => @dossier) %></h1>
+    <% if current_user.role? :admin %>
+    <h1><%= link_to 'D&eacute;truire le dossier'.html_safe, @dossier, :class => "btn btn-danger btn-lg", method: :delete, data: { confirm: 'Etes vous vraiment sur?' } %></h1>
 
-<p>
-  <strong>Siret:</strong>
-  <%= @dossier.SIRET %>
-</p>
+	<!-- Button trigger modal -->
+    <a type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+      Nouvel Exercice
+    </a>
 
-<p>
-  <strong>Activite:</strong>
-  <%= @dossier.Activite %>
-</p>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          </div>
+          <div class="modal-body">
+	  <%= form_for([@dossier, @exercice]) do |f| %>
+          <% if @exercice.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@exercice.errors.count, "error") %> prohibited this exercice from being saved:</h2>
+              <ul>
+              <% @exercice.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+              </ul>
+            </div>
+            <% end %>
+            <div class="field">
+            <label> Date de d&eacute;but d&acute;Exercice</label><br>
+            <%= f.text_field :start_date, :class => 'datepicker' %>
+            </div>
+            <div class="field">
+            <label> Date de fin d&acute;Exercice</label><br>
+            <%= f.text_field :end_date, :class => 'datepicker' %>
+            </div>
+          </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= f.submit 'Cr&eacute;er l&acute;exercice'.html_safe, :class => 'btn btn-primary' %>
+  	  <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
 
-<p>
-  <strong>Codenaf:</strong>
-  <%= @dossier.CodeNAF %>
-</p>
 
-<p>
-  <strong>Adresse:</strong>
-  <%= @dossier.Adresse %>
-</p>
 
-<p>
-  <strong>Ville:</strong>
-  <%= @dossier.Ville %>
-</p>
-
-<p>
-  <strong>Codepostal:</strong>
-  <%= @dossier.CodePostal %>
-</p>
-
-<p>
-  <strong>Pays:</strong>
-  <%= @dossier.Pays %>
-</p>
-
-<p>
-  <strong>Telephone1:</strong>
-  <%= @dossier.Telephone1 %>
-</p>
-
-<p>
-  <strong>Telephone2:</strong>
-  <%= @dossier.Telephone2 %>
-</p>
-
-<p>
-  <strong>Fax:</strong>
-  <%= @dossier.Fax %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @dossier.Email %>
-</p>
-
-<p>
-  <strong>Nace:</strong>
-  <%= @dossier.NACE %>
-</p>
-
-<p>
-  <strong>Numurssaf:</strong>
-  <%= @dossier.numURSSAF %>
-</p>
-
-<p>
-  <strong>Refurssaf:</strong>
-  <%= @dossier.RefURSSAF %>
-</p>
-
-<p>
-  <strong>Codeurssaf:</strong>
-  <%= @dossier.CodeURSSAF %>
-</p>
-
-<p>
-  <strong>Agrementansp:</strong>
-  <%= @dossier.AgrementANSP %>
-</p>
-
-<%= link_to 'Edit', edit_dossier_path(@dossier) %> |
-<% if current_user.role? :admin %>
-<%= link_to 'Liste dossiers', dossiers_path %>
-<%= link_to 'Retour', root_path %>
-<% else %>
-<%= link_to 'Retour', root_path %>
-<% end %>

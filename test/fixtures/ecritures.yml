@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  journal: MyString
+  date_ecriture: 2015-04-09
+  compte: MyString
+  libelle: MyString
+  debit: 9.99
+  credit: 9.99
+  numero_facture: MyString
+  mode_reglement: MyString
+  lettrage: MyString
+  echeance: 2015-04-09
+  numero_mouvement: 1
+
+two:
+  journal: MyString
+  date_ecriture: 2015-04-09
+  compte: MyString
+  libelle: MyString
+  debit: 9.99
+  credit: 9.99
+  numero_facture: MyString
+  mode_reglement: MyString
+  lettrage: MyString
+  echeance: 2015-04-09
+  numero_mouvement: 1
